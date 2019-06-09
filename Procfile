@@ -1,0 +1,1 @@
+web: gunicorn hdsena.wsgi --log-file -
