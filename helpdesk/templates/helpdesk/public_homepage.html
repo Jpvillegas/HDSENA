@@ -93,10 +93,11 @@
 {% csrf_token %}</form>
 </div></div></div>
 {% endif %}
+
 <script>
-                $(function() {
-            $( "#id_due_date" ).datepicker({dateFormat: 'yy-mm-dd'});
-                } );
-            </script>
+    $(function() {
+        $( "#id_due_date" ).datepicker({dateFormat: 'yy-mm-dd'});
+    } );
+</script>
 
 {% endblock %}
