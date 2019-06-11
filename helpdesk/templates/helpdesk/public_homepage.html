@@ -25,8 +25,8 @@
 <div class="panel panel-default">
 
 <div class="panel-body">
-    <h2 name='submit'>{% trans "Submit a Ticket" %}</h2>
-<p>{% trans "All fields are required." %} {% trans "Please provide as descriptive a title and description as possible." %}</p>
+    <h2 name='submit'>{% trans "Registrar Tickets" %}</h2>
+<p>{% trans "Todos los campos son obligatorios" %} {% trans "Por favor proporcione un título y una descripción lo más descriptivos posible." %}</p>
 
 <form role="form" method='post' action='./#submit' enctype='multipart/form-data'>
 <fieldset>
@@ -52,7 +52,7 @@
         {% endcomment %}
 
     <div class='buttons form-group'>
-        <input type='submit' class="btn btn-primary" value='{% trans "Submit Ticket" %}' />
+        <input type='submit' class="btn btn-primary" value='{% trans "Enviar Ticket" %}' />
     </div>
 </fieldset>
 
@@ -63,27 +63,27 @@
 {% endif %}
 
 {% if not helpdesk_settings.HELPDESK_VIEW_A_TICKET_PUBLIC and not helpdesk_settings.HELPDESK_SUBMIT_A_TICKET_PUBLIC %}
-        <h2>{% trans "Please use button at upper right to login first." %}</h2>
+        <h2>{% trans "Por favor use el botón en la parte superior derecha para iniciar sesión primero." %}</h2>
 {% endif %}
 
 {% if helpdesk_settings.HELPDESK_VIEW_A_TICKET_PUBLIC %}
 <div class="col-xs-6">
 <div class="panel panel-default">
 <div class="panel-body">
-<h2>{% trans "View a Ticket" %}</h2>
+<h2>{% trans "Ver Estado del Ticket" %}</h2>
 
 <form method='get' action="{% url 'helpdesk:public_view' %}">
 <fieldset>
     <div class="form-group {% if field.errors %}has-error{% endif %}">
-        <label for='id_ticket'>{% trans "Ticket" %}</label>
-        <div class="input-group"><input type='text' name='ticket' /></div>
+        <label for='id_ticket'>{% trans "# Ticket" %}</label>
+        <div class="input-group"><input type='text' name='ticket' placeholder="Ejemplo: 1" /></div>
     </div>
     <div class="form-group {% if field.errors %}has-error{% endif %}">
-        <label for='id_email'>{% trans "Your E-mail Address" %}</label>
-        <div class="input-group"><input type='text' name='email' /></div>
+        <label for='id_email'>{% trans "Tu Correo Electronico" %}</label>
+        <div class="input-group"><input type='text' name='email' placeholder="Ejemplo: xa@gmail.com"/></div>
     </div>
     <div class='buttons form-group'>
-    <input type='submit' class="btn btn-primary"  value='{% trans "View Ticket" %}' />
+    <input type='submit' class="btn btn-primary"  value='{% trans "Consultar Ticket" %}' />
     </div>
 </fieldset>
 {% csrf_token %}</form>

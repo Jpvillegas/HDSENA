@@ -9,22 +9,22 @@
                 <div class="col-lg-12">
                     <div class="panel panel-primary">
                         <div class="panel-heading">
-                            {% trans 'To automatically send an email to a user or e-mail address when this ticket is updated, select the user or enter an e-mail address below.' %}
+                            {% trans 'Para enviar automáticamente un correo electrónico a un usuario o una dirección de correo electrónico cuando se actualice este ticket, seleccione el usuario o ingrese una dirección de correo electrónico a continuación.' %}
                         </div>
                         <!-- /.panel-heading -->
                         <div class="panel-body">
                             <!-- Nav tabs -->
                             <ul class="nav nav-tabs">
-                                <li class="active"><a href="#EmailCC" data-toggle="tab">{% trans 'Email' %}</a>
+                                <li class="active"><a href="#EmailCC" data-toggle="tab">{% trans 'Correo' %}</a>
                                 </li>
-                                <li><a href="#UserCC" data-toggle="tab">{% trans 'User' %}</a>
+                                <li><a href="#UserCC" data-toggle="tab">{% trans 'Usuario' %}</a>
                                 </li>
                             </ul>
 
                             <!-- Tab panes -->
                             <div class="tab-content">
                                 <div class="tab-pane fade in active" id="EmailCC">
-                                    <h4>{% trans 'Add Email' %}</h4>
+                                    <h4>{% trans 'Agregar Correo' %}</h4>
                                     <form method='post' action='./'>
                                         <fieldset>
                                             <dl>{% for field in form_email %}
@@ -38,7 +38,7 @@
                                     {% csrf_token %}</form>
                                 </div>
                                 <div class="tab-pane fade" id="UserCC">
-                                    <h4>{% trans 'Add User' %}</h4>
+                                    <h4>{% trans 'Añadir Usuario' %}</h4>
                                     <form method='post' action='./'>
                                         <fieldset>
                                             <dl>{% for field in form_user %}
@@ -48,7 +48,7 @@
                                                 {% if field.help_text %}<dd class='form_help_text'>{{ field.help_text }}</dd>{% endif %}
                                             {% endfor %}</dl>
                                         </fieldset>
-                                        <button class="btn btn-primary" type='submit'>{% trans "Save Ticket CC" %}</button>
+                                        <button class="btn btn-primary" type='submit'>{% trans "Guardar Ticket CC" %}</button>
                                     {% csrf_token %}</form>
                                 </div>
                             </div>

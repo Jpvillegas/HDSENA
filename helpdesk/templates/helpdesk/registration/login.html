@@ -10,12 +10,12 @@
     <div class="col-md-4 col-md-offset-4">
         <div class="login-panel panel panel-default">
             <div class="panel-heading">
-                <h3 class="panel-title">{% trans 'Please Sign In' %}</h3>
+                <h3 class="panel-title">{% trans 'Por favor, ingrese' %}</h3>
             </div>
             <div class="panel-body">
                 <form role="form" method='post' action='./'>
                 {% if form.errors %}
-                <div class="alert alert-danger">{% trans "Your username and password didn't match. Please try again." %}</div>
+                <div class="alert alert-danger">{% trans "Tu nombre de usuario y contraseña no coinciden. Inténtalo de nuevo." %}</div>
                 {% endif %}
                     <fieldset>
                         <div class="form-group">
@@ -26,10 +26,10 @@
                         </div>
                         <div class="checkbox">
                             <label>
-                                <input name="remember" type="checkbox" value="Remember Me">{% trans 'Remember Me' %}
+                                <input name="remember" type="checkbox" value="Remember Me">{% trans 'Recordarme' %}
                             </label>
                         </div>
-                        <input class="btn btn-lg btn-success btn-block" type='submit' value='{% trans "Login" %}' />
+                        <input class="btn btn-lg btn-success btn-block" type='submit' value='{% trans "Ingresar" %}' />
                         <input type="hidden" name="next" value="{% if next %}{{ next }}{% else %}../{% endif %}" />
                     </fieldset>
                 {% csrf_token %}</form>

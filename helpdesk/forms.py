@@ -61,7 +61,7 @@ class CustomFieldMixin(object):
             fieldclass = forms.ChoiceField
             choices = field.choices_as_array
             if field.empty_selection_list:
-                choices.insert(0, ('', '---------'))
+                choices.insert(0, ('', 'Seleccione'))
             instanceargs['choices'] = choices
         else:
             # Try to use the immediate equivalences dictionary
@@ -136,7 +136,7 @@ class AbstractTicketForm(CustomFieldMixin, forms.Form):
     """
     queue = forms.ChoiceField(
         widget=forms.Select(attrs={'class': 'form-control'}),
-        label=_('Queue'),
+        label=_('Tipo de Solicitud'),
         required=True,
         choices=()
     )
@@ -145,14 +145,14 @@ class AbstractTicketForm(CustomFieldMixin, forms.Form):
         max_length=100,
         required=True,
         widget=forms.TextInput(attrs={'class': 'form-control'}),
-        label=_('Summary of the problem'),
+        label=_('Resumen del problema'),
     )
 
     body = forms.CharField(
         widget=forms.Textarea(attrs={'class': 'form-control'}),
-        label=_('Description of your issue'),
+        label=_('Descripción de su problema'),
         required=True,
-        help_text=_('Please be as descriptive as possible and include all details'),
+        help_text=_('Por favor, sea lo más descriptivo posible e incluya todos los detalles.'),
     )
 
     priority = forms.ChoiceField(
@@ -160,20 +160,20 @@ class AbstractTicketForm(CustomFieldMixin, forms.Form):
         choices=Ticket.PRIORITY_CHOICES,
         required=True,
         initial='3',
-        label=_('Priority'),
-        help_text=_("Please select a priority carefully. If unsure, leave it as '3'."),
+        label=_('Prioridad'),
+        help_text=_("Por favor, seleccione una prioridad con cuidado. Si no está seguro, déjelo como '3'."),
     )
 
     due_date = forms.DateTimeField(
         widget=forms.TextInput(attrs={'class': 'form-control'}),
         required=False,
-        label=_('Due on'),
+        label=_('Fecha de Solicitud'),
     )
 
     attachment = forms.FileField(
         required=False,
-        label=_('Attach File'),
-        help_text=_('You can attach a file such as a document or screenshot to this ticket.'),
+        label=_('Subir archivo'),
+        help_text=_('Puede adjuntar un archivo como un documento o una captura de pantalla a este ticket.'),
     )
 
     def _add_form_custom_fields(self, staff_only_filter=None):
@@ -296,19 +296,17 @@ class TicketForm(AbstractTicketForm):
     """
     submitter_email = forms.EmailField(
         required=False,
-        label=_('Submitter E-Mail Address'),
+        label=_('Enviar correo'),
         widget=forms.TextInput(attrs={'class': 'form-control'}),
-        help_text=_('This e-mail address will receive copies of all public '
-                    'updates to this ticket.'),
+        help_text=_('Esta dirección de correo electrónico recibirá copias de todas las actualizaciones públicas de este ticket.'),
     )
 
     assigned_to = forms.ChoiceField(
         widget=forms.Select(attrs={'class': 'form-control'}),
         choices=(),
         required=False,
-        label=_('Case owner'),
-        help_text=_('If you select an owner other than yourself, they\'ll be '
-                    'e-mailed details of this ticket immediately.'),
+        label=_('Persona que reporta'),
+        help_text=_('Si selecciona un propietario que no sea usted, será enviado por correo electrónico los detalles de este boleto inmediatamente.'),
     )
 
     def __init__(self, *args, **kwargs):
@@ -359,8 +357,8 @@ class PublicTicketForm(AbstractTicketForm):
     submitter_email = forms.EmailField(
         widget=forms.TextInput(attrs={'class': 'form-control'}),
         required=True,
-        label=_('Your E-Mail Address'),
-        help_text=_('We will e-mail you when your ticket is updated.'),
+        label=_('Correo Electronico'),
+        help_text=_('Le enviaremos un correo electrónico cuando se actualice su boleto.'),
     )
 
     def __init__(self, *args, **kwargs):
