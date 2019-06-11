@@ -373,19 +373,19 @@ class Ticket(models.Model):
     DUPLICATE_STATUS = 5
 
     STATUS_CHOICES = (
-        (OPEN_STATUS, _('Open')),
-        (REOPENED_STATUS, _('Reopened')),
-        (RESOLVED_STATUS, _('Resolved')),
-        (CLOSED_STATUS, _('Closed')),
-        (DUPLICATE_STATUS, _('Duplicate')),
+        (OPEN_STATUS, _('Abierto')),
+        (REOPENED_STATUS, _('Reabierto')),
+        (RESOLVED_STATUS, _('Solucionado')),
+        (CLOSED_STATUS, _('Cerrados')),
+        (DUPLICATE_STATUS, _('Duplicados')),
     )
 
     PRIORITY_CHOICES = (
-        (1, _('1. Critical')),
-        (2, _('2. High')),
+        (1, _('1. Emergencia')),
+        (2, _('2. Urgente')),
         (3, _('3. Normal')),
-        (4, _('4. Low')),
-        (5, _('5. Very Low')),
+        (4, _('4. Menos Urgente')),
+        (5, _('5. Baja Urgencia')),
     )
 
     title = models.CharField(
