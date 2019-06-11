@@ -16,22 +16,29 @@
             <div class="collapse navbar-collapse" id="helpdesk-nav-collapse">
             {% if helpdesk_settings.HELPDESK_NAVIGATION_ENABLED and user.is_authenticated or user.is_staff %}
             <ul class="nav navbar-top-links navbar-right">
-                <li>
-                    <a href=''><i class="fa fa-dashboard fa-fw"></i> <span class="nav-text">{% trans "Dashboard (En Proceso)" %}</span></a> <!--{% url 'helpdesk:dashboard' %} -->
-                </li>
-                <li>
-                    <a href=''><i class="fa fa-tasks fa-fw"></i> <span class="nav-text">{% trans "Tickets (En Proceso)" %}</span></a> <!-- {% url 'helpdesk:list' %} -->
-                </li>
-                <li>
+                 <li>
                     <a href='{% url 'helpdesk:submit' %}'><i class="fa fa-plus-circle fa-fw"></i> <span class="nav-text">{% trans "Nuevo Ticket" %}</span></a>
                 </li>
+
+                <!-- /.navbar-header -->
+
+                <!--
                 <li>
-                    <a href=''><i class="fa fa-bar-chart-o fa-fw"></i> <span class="nav-text"> {% trans "Stats (En Proceso)" %}</span></a> <!-- {% url 'helpdesk:report_index' %} -->
+                    <a href=''><i class="fa fa-dashboard fa-fw"></i> <span class="nav-text">{% trans "Dashboard (En Proceso)" %}</span></a> esta es la url{% url 'helpdesk:dashboard' %} 
+                </li>
+                
+                <li>
+                    <a href=''><i class="fa fa-tasks fa-fw"></i> <span class="nav-text">{% trans "Tickets (En Proceso)" %}</span></a>  esta es la url{% url 'helpdesk:list' %}
+                </li>
+               
+                <li>
+                    <a href=''><i class="fa fa-bar-chart-o fa-fw"></i> <span class="nav-text"> {% trans "Stats (En Proceso)" %}</span></a>  {% url 'helpdesk:report_index' %} 
                 </li>
                 {% if helpdesk_settings.HELPDESK_KB_ENABLED %}
                 <li>
-                    <a href=''><i class="fa fa-database fa-fw"></i> <span class="nav-text">{% trans "Knowledgebase (En Proceso)" %}</span></a> <!-- {% url 'helpdesk:kb_index' %} -->
+                    <a href=''><i class="fa fa-database fa-fw"></i> <span class="nav-text">{% trans "Knowledgebase (En Proceso)" %}</span></a> esta es la url{% url 'helpdesk:kb_index' %} 
                 </li>
+                    -->
 
                 {% endif %}
                 {% if user_saved_queries_ %}
@@ -48,6 +55,7 @@
                 {% endif %}
                 {% if not query %}
                 <li>
+                     <!-- /Buscador -->
                     <form class="navbar-form navbar-top" id='searchform' method='get' action="{% url 'helpdesk:list' %}">
                         <div class="input-group custom-search-form">
                             <input type='text' name='q' size='15' class='input form-control' placeholder='{% trans "Buscar..." %}' id='search_query' title='{% trans "Enter a keyword, or a ticket number to jump straight to that ticket." %}'/>
