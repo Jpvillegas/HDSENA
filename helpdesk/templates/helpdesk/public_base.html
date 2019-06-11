@@ -52,7 +52,21 @@
         </div>
 
         <div id='body' class="row">
-            {% block helpdesk_body %}{% endblock %}
+            {% block helpdesk_body %}
+
+            <!-- jQuery -->
+            {% if helpdesk_settings.HELPDESK_USE_CDN %}
+            <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+            {% else %}
+            <script src="{% static 'helpdesk/vendor/jquery/jquery.min.js' %}"></script>
+            {% endif %}
+            <script src='{% static "helpdesk/vendor/jquery-ui/jquery-ui.min.js" %}'></script>
+
+             <!-- jQuery DatePicker -->
+            <script src='{% static "helpdesk/vendor/jquery-ui/jquery-ui.min.js" %}' type='text/javascript' language='javascript'></script>
+            <link href="{% static 'helpdesk/vendor/jquery-ui/jquery-ui.css' %}" rel="stylesheet">
+
+            {% endblock %}
         </div>
 
         <div id='footer' class="row">
@@ -61,17 +75,7 @@
     </div>
     {% include "helpdesk/debug.html" %}
 
-    <!-- jQuery -->
-    {% if helpdesk_settings.HELPDESK_USE_CDN %}
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
-    {% else %}
-    <script src="{% static 'helpdesk/vendor/jquery/jquery.min.js' %}"></script>
-    {% endif %}
-    <script src='{% static "helpdesk/vendor/jquery-ui/jquery-ui.min.js" %}'></script>
 
-     <!-- jQuery DatePicker -->
-    <script src='{% static "helpdesk/vendor/jquery-ui/jquery-ui.min.js" %}' type='text/javascript' language='javascript'></script>
-    <link href="{% static 'helpdesk/vendor/jquery-ui/jquery-ui.css' %}" rel="stylesheet">
 
 
     <!-- Bootstrap Core JavaScript -->

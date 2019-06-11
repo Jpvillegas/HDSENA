@@ -1,7 +1,5 @@
 {% extends "helpdesk/public_base.html" %}
 {% load i18n bootstrap %}
-<script type='text/javascript' language='javascript'> </script>
-
 
 {% block helpdesk_body %}
 
@@ -95,9 +93,9 @@
 {% endif %}
 
 <script>
-    $(function() {
-        $( "#id_due_date" ).datepicker({dateFormat: 'yy-mm-dd'});
-    } );
+                $( function() {
+            $( "#id_due_date" ).datepicker({dateFormat: 'yy-mm-dd'});
+                } );
 </script>
 
 {% endblock %}
