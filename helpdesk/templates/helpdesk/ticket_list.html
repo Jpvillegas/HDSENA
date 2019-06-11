@@ -135,7 +135,7 @@ $(document).ready(function() {
                                             <button class='filterBuilderRemove btn btn-danger btn-xs'><i class="fa fa-trash-o"></i></button>
                                             </div>
                                             <hr style='clear: both;' />
-                                            <input class="btn btn-primary" type='submit' value='{% trans "Apply Filter" %}' />
+                                            <input class="btn btn-primary" type='submit' value='{% trans "Filtrar" %}' />
                                             {% if from_saved_query and saved_query.user == user %}
                                             <p>{% blocktrans with saved_query.title as query_name %}You are currently viewing saved query <strong>"{{ query_name }}"</strong>.{% endblocktrans %} <a href='{% url 'helpdesk:delete_query' saved_query.id %}'>{% trans "Borrar Consulta Guardada" %}</a></p>
                                             {% endif %}

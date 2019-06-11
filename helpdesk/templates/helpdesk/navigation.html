@@ -17,20 +17,20 @@
             {% if helpdesk_settings.HELPDESK_NAVIGATION_ENABLED and user.is_authenticated or user.is_staff %}
             <ul class="nav navbar-top-links navbar-right">
                 <li>
-                    <a href=''><i class="fa fa-dashboard fa-fw"></i> <span class="nav-text">{% trans "Dashboard (Inhabilitado)" %}</span></a> <!--{% url 'helpdesk:dashboard' %} -->
+                    <a href='{% url 'helpdesk:dashboard' %}'><i class="fa fa-dashboard fa-fw"></i> <span class="nav-text">{% trans "Dashboard " %}</span></a> <!--{% url 'helpdesk:dashboard' %} -->
                 </li>
                 <li>
-                    <a href=''><i class="fa fa-tasks fa-fw"></i> <span class="nav-text">{% trans "Tickets (Inhabilitado)" %}</span></a> <!-- {% url 'helpdesk:list' %} -->
+                    <a href=''><i class="fa fa-tasks fa-fw"></i> <span class="nav-text">{% trans "Tickets (En Proceso)" %}</span></a> <!-- {% url 'helpdesk:list' %} -->
                 </li>
                 <li>
                     <a href='{% url 'helpdesk:submit' %}'><i class="fa fa-plus-circle fa-fw"></i> <span class="nav-text">{% trans "Nuevo Ticket" %}</span></a>
                 </li>
                 <li>
-                    <a href=''><i class="fa fa-bar-chart-o fa-fw"></i> <span class="nav-text"> {% trans "Stats (Inhabilitado)" %}</span></a> <!-- {% url 'helpdesk:report_index' %} -->
+                    <a href=''><i class="fa fa-bar-chart-o fa-fw"></i> <span class="nav-text"> {% trans "Stats (En Proceso)" %}</span></a> <!-- {% url 'helpdesk:report_index' %} -->
                 </li>
                 {% if helpdesk_settings.HELPDESK_KB_ENABLED %}
                 <li>
-                    <a href=''><i class="fa fa-database fa-fw"></i> <span class="nav-text">{% trans "Knowledgebase (Inhabilitado)" %}</span></a> <!-- {% url 'helpdesk:kb_index' %} -->
+                    <a href=''><i class="fa fa-database fa-fw"></i> <span class="nav-text">{% trans "Knowledgebase (En Proceso)" %}</span></a> <!-- {% url 'helpdesk:kb_index' %} -->
                 </li>
 
                 {% endif %}
