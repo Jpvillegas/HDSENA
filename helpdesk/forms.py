@@ -296,7 +296,7 @@ class TicketForm(AbstractTicketForm):
     """
     submitter_email = forms.EmailField(
         required=False,
-        label=_('Enviar correo'),
+        label=_('Enviarme correo'),
         widget=forms.TextInput(attrs={'class': 'form-control'}),
         help_text=_('Esta dirección de correo electrónico recibirá copias de todas las actualizaciones públicas de este ticket.'),
     )
@@ -305,7 +305,7 @@ class TicketForm(AbstractTicketForm):
         widget=forms.Select(attrs={'class': 'form-control'}),
         choices=(),
         required=False,
-        label=_('Persona que reporta'),
+        label=_('Persona encargada'),
         help_text=_('Si selecciona un propietario que no sea usted, será enviado por correo electrónico los detalles de este boleto inmediatamente.'),
     )
 
