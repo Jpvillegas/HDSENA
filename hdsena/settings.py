@@ -30,15 +30,30 @@ ALLOWED_HOSTS = ['*']
 
 # Application definition
 
-INSTALLED_APPS = [
-    'sena.apps.SenaConfig',
-    'django.contrib.admin',
+
+
+
+INSTALLED_APPS = (
+    'django.contrib.messages',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
-    'django.contrib.messages',
+    'django.contrib.sites',  # Required for determining domain url for use in emails
+    'django.contrib.admin',  # Required for helpdesk admin/maintenance
+    'django.contrib.humanize',  # Required for elapsed time formatting
+    'markdown_deux',  # Required for Knowledgebase item formatting
+    'bootstrapform', # Required for nicer formatting of forms with the default templates
+    'helpdesk',  # This is us!
     'django.contrib.staticfiles',
-]
+    'sena.apps.SenaConfig',
+
+)
+
+
+SITE_ID = 1
+
+LOGIN_URL = '/helpdesk/login/'
+ROOT_URLCONF = 'helpdesksena.urls'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -136,6 +151,10 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_DIR  = (
     os.path.join(BASE_DIR,'static'),
 )
+
+MEDIA_ROOT = os.path.join(BASE_DIR, "media/")
+
+
 
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
