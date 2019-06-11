@@ -1,7 +1,27 @@
 {% extends "helpdesk/public_base.html" %}
 {% load i18n bootstrap %}
 
+
+{% block helpdesk_head %}
+<script type='text/javascript' language='javascript'>
+// this function listens for changes on any file input, and
+// emits the appropriate event to update the input's text.
+// Needed to have properly styled file input buttons! (this really shouldn't be this hard...)
+$(document).on('change', ':file', function() {
+    var input = $(this),
+        inputWidgetNum = $(this).attr('id').split("file")[1],
+        numFiles = input.get(0).files ? input.get(0).files.length : 1,
+        label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
+    input.trigger('fileselect', [numFiles, label, inputWidgetNum]);
+});
+</script>
+{% endblock %}
+
+
 {% block helpdesk_body %}
+
+
+
 
 {% if kb_categories %}
 <h2>{% trans "Knowledgebase Articles" %}</h2>
@@ -9,6 +29,7 @@
 <table class="table table-hover table-bordered table-striped">
 <caption>{% trans "Knowledgebase Categories" %}</caption>
 <thead>
+
 <tr><th>{% trans "Category" %}</th></tr>
 </thead>
 <tbody>
