@@ -41,7 +41,7 @@ def homepage(request):
 
     if request.method == 'POST':
         form = PublicTicketForm(request.POST, request.FILES)
-        form.fields['queue'].choices = [('', '--------')] + [
+        form.fields['queue'].choices = [('', 'seleccione')] + [
             (q.id, q.title) for q in Queue.objects.filter(allow_public_submission=True)]
         if form.is_valid():
             if text_is_spam(form.cleaned_data['body'], request):
