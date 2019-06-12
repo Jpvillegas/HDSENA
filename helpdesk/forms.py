@@ -356,7 +356,7 @@ class PublicTicketForm(AbstractTicketForm):
     """
     submitter_email = forms.EmailField(
         widget=forms.TextInput(attrs={'class': 'form-control'}),
-        required=False,
+        required=True,
         label=_('Correo Electronico'),
         help_text=_('Le enviaremos un correo electrónico cuando se actualice su boleto.'),
     )
@@ -376,37 +376,25 @@ class PublicTicketForm(AbstractTicketForm):
 
         self._add_form_custom_fields(False)
 
-    def save(self, user=None):
+    def save(self):
         """
         Writes and returns a Ticket() object
         """
-
         ticket, queue = self._create_ticket()
-        if self.cleaned_data['assigned_to']:
-            try:
-                u = User.objects.get(id=self.cleaned_data['assigned_to'])
-                ticket.assigned_to = u
-            except User.DoesNotExist:
-                ticket.assigned_to = None
+        if queue.default_owner and not ticket.assigned_to:
+            ticket.assigned_to = queue.default_owner
         ticket.save()
 
         self._create_custom_fields(ticket)
 
-        if self.cleaned_data['assigned_to']:
-            title = _('Ticket Opened & Assigned to %(name)s') % {
-                'name': ticket.get_assigned_to or _("<invalid user>")
-            }
-        else:
-            title = _('Ticket Opened')
-        followup = self._create_follow_up(ticket, title=title, user=user)
+        followup = self._create_follow_up(ticket, title=_('Ticket Opened Via Web'))
         followup.save()
 
         files = self._attach_files_to_follow_up(followup)
         self._send_messages(ticket=ticket,
                             queue=queue,
                             followup=followup,
-                            files=files,
-                            user=user)
+                            files=files)
         return ticket
 
 
