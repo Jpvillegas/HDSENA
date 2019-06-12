@@ -979,7 +979,8 @@ def create_ticket(request):
         form.fields['assigned_to'].choices = [('', '--------')] + [
             (u.id, u.get_username()) for u in assignable_users]
         if form.is_valid():
-            ticket = form.save(user=request.user)
+            ticket = form.save(commit=False)
+            ticket.user = request.user
             if _has_access_to_queue(request.user, ticket.queue):
                 return HttpResponseRedirect(ticket.get_absolute_url())
             else:
