@@ -356,7 +356,7 @@ class PublicTicketForm(AbstractTicketForm):
     """
     submitter_email = forms.EmailField(
         widget=forms.TextInput(attrs={'class': 'form-control'}),
-        required=True,
+        required=False,
         label=_('Correo Electronico'),
         help_text=_('Le enviaremos un correo electrónico cuando se actualice su boleto.'),
     )
