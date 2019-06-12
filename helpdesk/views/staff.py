@@ -981,6 +981,7 @@ def create_ticket(request):
         if form.is_valid():
             ticket = form.save(commit=False)
             ticket.user = request.user
+            ticket.save()
             if _has_access_to_queue(request.user, ticket.queue):
                 return HttpResponseRedirect(ticket.get_absolute_url())
             else:
