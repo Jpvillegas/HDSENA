@@ -376,25 +376,37 @@ class PublicTicketForm(AbstractTicketForm):
 
         self._add_form_custom_fields(False)
 
-    def save(self):
+    def save(self, user=None):
         """
         Writes and returns a Ticket() object
         """
+
         ticket, queue = self._create_ticket()
-        if queue.default_owner and not ticket.assigned_to:
-            ticket.assigned_to = queue.default_owner
+        if self.cleaned_data['assigned_to']:
+            try:
+                u = User.objects.get(id=self.cleaned_data['assigned_to'])
+                ticket.assigned_to = u
+            except User.DoesNotExist:
+                ticket.assigned_to = None
         ticket.save()
 
         self._create_custom_fields(ticket)
 
-        followup = self._create_follow_up(ticket, title=_('Ticket Opened Via Web'))
+        if self.cleaned_data['assigned_to']:
+            title = _('Ticket Opened & Assigned to %(name)s') % {
+                'name': ticket.get_assigned_to or _("<invalid user>")
+            }
+        else:
+            title = _('Ticket Opened')
+        followup = self._create_follow_up(ticket, title=title, user=user)
         followup.save()
 
         files = self._attach_files_to_follow_up(followup)
         self._send_messages(ticket=ticket,
                             queue=queue,
                             followup=followup,
-                            files=files)
+                            files=files,
+                            user=user)
         return ticket
 
 
