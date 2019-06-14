@@ -97,7 +97,7 @@
             <!-- /.navbar-top-links -->
             {% else %}
                 {# Public menu #}
-                <ul id="dropdown" class="nav navbar-nav pull-xs-right">
+                <ul id="dropdown" class="nav navbar-nav pull-xs-left">
                     {% if helpdesk_settings.HELPDESK_ALLOW_NON_STAFF_TICKET_UPDATE %}
                         <li><a href='{% url 'helpdesk:dashboard' %}'>{% trans "Dashboard" %}</a></li>
                         <li><a href='{% url 'helpdesk:submit' %}'>{% trans "Registrar Ticket" %}</a></li>
