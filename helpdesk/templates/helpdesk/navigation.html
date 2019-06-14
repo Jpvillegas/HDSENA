@@ -97,8 +97,8 @@
             </ul>
             <!-- /.navbar-top-links -->
             {% else %}
-                 {# Public menu #}
-                <ul id="dropdown" class="nav navbar-nav navbar-right" padding="100px">
+  {# Public menu #}
+                <ul id="dropdown" class="nav navbar-nav navbar-right">
                     {% if helpdesk_settings.HELPDESK_ALLOW_NON_STAFF_TICKET_UPDATE %}
                         <li><a href='{% url 'helpdesk:dashboard' %}'>{% trans "Dashboard" %}</a></li>
                         <li><a href='{% url 'helpdesk:submit' %}'>{% trans "Registrar Ticket" %}</a></li>
@@ -108,14 +108,15 @@
                         {% endif %}
 
                     {% endif %}
+                    {% if not request.path == '/helpdesk/login/' or user.is_authenticated %}
+                        <li class="list-group-item list-group-item-success">{% if user.is_authenticated %}<a style="text-decoration:none; color:black;" href='{% url 'helpdesk:logout' %}'>{% trans "Salir" %}</a>{% else %}<a style="text-decoration:none; color:black;" href='{% url 'helpdesk:login' %}?next={% if next %}{{ next|escape }}{% else %}{% url 'helpdesk:home' %}{% endif %}'><span class="glyphicon glyphicon-log-in" style="padding-right: 10px"></span><strong>{% trans "Iniciar sesion" %}</strong></a>{% endif %}</li>
+                    {% endif %}
 
                      <!--{% if helpdesk_settings.HELPDESK_KB_ENABLED %}<li><a href=''>{% trans "Knowledgebase (Inhabilitado)" %}</a></li>{% endif %}  {% url 'helpdesk:kb_index' %} -->
                 </ul>
-
-                    {% if not request.path == '/helpdesk/login/' or user.is_authenticated %}
-                        <button class="nav navbar-nav navbar-right btn btn-success" type="button" width="70px" style="margin-top:17px; margin-right: 40px">{% if user.is_authenticated %}<a style="text-decoration:none; color:white;" href='{% url 'helpdesk:logout' %}'>{% trans "Salir" %}</a>{% else %}<a style="text-decoration:none; color:white;" href='{% url 'helpdesk:login' %}?next={% if next %}{{ next|escape }}{% else %}{% url 'helpdesk:home' %}{% endif %}'><strong>{% trans "Iniciar Sesion" %}</strong></a>{% endif %}</button>
-                    {% endif %}
             {% endif %}
             </div>
         </nav>
+
+
 
