@@ -41,7 +41,7 @@ def homepage(request):
 
     if request.method == 'POST':
         form = PublicTicketForm(request.POST, request.FILES)
-        form.fields['queue'].choices = [('', 'seleccione')] + [
+        form.fields['queue'].choices = [('', 'Seleccione')] + [
             (q.id, q.title) for q in Queue.objects.filter(allow_public_submission=True)]
         if form.is_valid():
             if text_is_spam(form.cleaned_data['body'], request):
@@ -84,7 +84,7 @@ def homepage(request):
             initial_data['submitter_email'] = request.user.email
 
         form = PublicTicketForm(initial=initial_data)
-        form.fields['queue'].choices = [('', 'seleccione')] + [
+        form.fields['queue'].choices = [('', 'Seleccione')] + [
             (q.id, q.title) for q in Queue.objects.filter(allow_public_submission=True)]
 
     knowledgebase_categories = None
