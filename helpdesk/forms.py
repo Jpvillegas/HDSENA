@@ -167,7 +167,7 @@ class AbstractTicketForm(CustomFieldMixin, forms.Form):
     due_date = forms.DateTimeField(
         widget=forms.TextInput(attrs={'class': 'form-control'}),
         required=False,
-        label=_('Fecha de Solicitud'),
+        label=_('Fecha limite para dar solucion'),
     )
 
     attachment = forms.FileField(
