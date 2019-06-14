@@ -159,7 +159,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, "media/")
 
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-#EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend' #funciona pero no envia correos
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend' #funciona pero no envia correos
 #EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'  #yaaa
-EMAIL_BACKEND = 'django.core.mail.backends.locmem.EmailBackend'
+#EMAIL_BACKEND = 'django.core.mail.backends.locmem.EmailBackend'
 
