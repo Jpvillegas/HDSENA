@@ -11,8 +11,10 @@
                 </button>
 
             <a href="{% url 'helpdesk:home' %}">
-               <img src="https://upload.wikimedia.org/wikipedia/commons/8/83/Sena_Colombia_logo.svg" alt="logosena" width="70px">
+                <img src="http://4.bp.blogspot.com/-rhQKYBxXQgw/WW5byUEe8oI/AAAAAAAADuE/_OTzDsafeyoR54AbdAkcUjN0g6KftP0TQCK4BGAYYCw/s900/gif%2Bsalud.gif" alt="logosena" width="600px">
             </a>
+            
+
             </div>
             <!-- /.navbar-header -->
 
@@ -99,7 +101,7 @@
             </ul>
             <!-- /.navbar-top-links -->
             {% else %}
-  {# Public menu #}
+                {# Public menu #}
                 <ul id="dropdown" class="nav navbar-nav navbar-right">
                     {% if helpdesk_settings.HELPDESK_ALLOW_NON_STAFF_TICKET_UPDATE %}
                         <li><a href='{% url 'helpdesk:dashboard' %}'>{% trans "Dashboard" %}</a></li>
@@ -111,7 +113,7 @@
 
                     {% endif %}
                     {% if not request.path == '/helpdesk/login/' or user.is_authenticated %}
-                        <li class="list-group-item list-group-item-success">{% if user.is_authenticated %}<a style="text-decoration:none; color:black;" href='{% url 'helpdesk:logout' %}'>{% trans "Salir" %}</a>{% else %}<a style="text-decoration:none; color:black;" href='{% url 'helpdesk:login' %}?next={% if next %}{{ next|escape }}{% else %}{% url 'helpdesk:home' %}{% endif %}'><span class="glyphicon glyphicon-log-in" style="padding-right: 10px"></span><strong>{% trans "Iniciar sesion" %}</strong></a>{% endif %}</li>
+                        <li class="list-group-item list-group-item-success">{% if user.is_authenticated %}<a style="text-decoration:none; color:black;" href='{% url 'helpdesk:logout' %}'>{% trans "Salir" %}</a>{% else %}<a style="text-decoration:none; color:black;" href='{% url 'helpdesk:login' %}?next={% if next %}{{ next|escape }}{% else %}{% url 'helpdesk:home' %}{% endif %}'><span class="glyphicon glyphicon-log-in" style="padding-right: 10px; height:20px"></span><strong>{% trans "Iniciar sesion" %}</strong></a>{% endif %}</li>
                     {% endif %}
 
                      <!--{% if helpdesk_settings.HELPDESK_KB_ENABLED %}<li><a href=''>{% trans "Knowledgebase (Inhabilitado)" %}</a></li>{% endif %}  {% url 'helpdesk:kb_index' %} -->
@@ -119,6 +121,4 @@
             {% endif %}
             </div>
         </nav>
-
-
 

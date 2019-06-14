@@ -27,8 +27,8 @@
 <div class="panel panel-default">
 
 <div class="panel-body">
-    <h2 name='submit'>{% trans "Registrar Tickets" %}</h2>
-<p>{% trans "Todos los campos son obligatorios" %} {% trans "Por favor proporcione un título y una descripción lo más claro posible." %}</p>
+    <h2 name='submit' style="color: orange;">{% trans "Registrar Tickets" %}</h2>
+<p>{% trans "Todos los campos son obligatorios" %} {% trans "Por favor proporcione un título y una descripción lo más descriptivos posible." %}</p>
 
 <form role="form" method='post' action='./#submit' enctype='multipart/form-data'>
 <fieldset>
@@ -42,7 +42,7 @@
 
 
             <div class="form-group {% if field.errors %}has-error{% endif %}">
-                <label class="control-label" for='id_{{ field.name }}'>{{ field.label }}</label>{% if not field.field.required %} <span class='form_optional'>{% trans "(Optional)" %}</span>{% endif %}</dt>
+                <label class="control-label" for='id_{{ field.name }}'>{{ field.label }}</label>{% if not field.field.required %} <span class='form_optional'>{% trans "(Opcional)" %}</span>{% endif %}</dt>
                 <div class="input-group">{{ field }}</div>
                 {% if field.errors %}<div class="help-block">{{ field.errors }}</div>{% endif %}
                 {% if field.help_text %}<span class='fhelp-block'>{{ field.help_text }}</span>{% endif %}
@@ -54,7 +54,7 @@
         {% endcomment %}
 
     <div class='buttons form-group'>
-        <input type='submit' class="btn btn-primary" value='{% trans "Enviar Ticket" %}' />
+        <input type='submit' class="btn btn-success" value='{% trans "Enviar Ticket" %}' />
     </div>
 </fieldset>
 
@@ -72,7 +72,7 @@
 <div class="col-xs-6">
 <div class="panel panel-default">
 <div class="panel-body">
-<h2>{% trans "Ver Estado del Ticket" %}</h2>
+<h2 style="color: orange">{% trans "Ver Estado del Ticket" %}</h2>
 
 <form method='get' action="{% url 'helpdesk:public_view' %}">
 <fieldset>
@@ -85,7 +85,7 @@
         <div class="input-group"><input type='text' name='email' placeholder="Ejemplo: xa@gmail.com"/></div>
     </div>
     <div class='buttons form-group'>
-    <input type='submit' class="btn btn-primary"  value='{% trans "Consultar Ticket" %}' />
+    <input type='submit' class="btn btn-success"  value='{% trans "Consultar Ticket" %}' />
     </div>
 </fieldset>
 {% csrf_token %}</form>

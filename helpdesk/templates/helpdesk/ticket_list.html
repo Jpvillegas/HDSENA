@@ -41,14 +41,14 @@ $(document).ready(function() {
 
             <div class="row">
                 <div class="col-lg-12">
-                    <div class="panel panel-primary">
+                    <div class="panel panel-default">
                         <div class="panel-heading">
                             {% trans "Seleccion de Consulta" %}
                         </div>
                         <!-- .panel-heading -->
                         <div class="panel-body">
                             <div class="panel-group" id="accordion">
-                                <div class="panel panel-primary">
+                                <div class="panel panel-default">
                                     <div class="panel-heading">
                                         <h4 class="panel-title">
                                             <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">{% trans "Cambiar Consulta" %}</a>
@@ -76,7 +76,7 @@ $(document).ready(function() {
                                                     {% trans "Creados" %}
                                                 </option>
                                                 <option value='title'{% ifequal query_params.sorting "title"%} selected='selected'{% endifequal %}>
-                                                    {% trans "Descripcion" %}
+                                                    {% trans "Titulo" %}
                                                 </option>
                                                 <option value='queue'{% ifequal query_params.sorting "queue"%} selected='selected'{% endifequal %}>
                                                     {% trans "Tipo de Solicitud" %}
@@ -135,7 +135,7 @@ $(document).ready(function() {
                                             <button class='filterBuilderRemove btn btn-danger btn-xs'><i class="fa fa-trash-o"></i></button>
                                             </div>
                                             <hr style='clear: both;' />
-                                            <input class="btn btn-primary" type='submit' value='{% trans "Filtrar" %}' />
+                                            <input class="btn btn-success" type='submit' value='{% trans "Filtrar" %}' />
                                             {% if from_saved_query and saved_query.user == user %}
                                             <p>{% blocktrans with saved_query.title as query_name %}You are currently viewing saved query <strong>"{{ query_name }}"</strong>.{% endblocktrans %} <a href='{% url 'helpdesk:delete_query' saved_query.id %}'>{% trans "Borrar Consulta Guardada" %}</a></p>
                                             {% endif %}
@@ -146,7 +146,7 @@ $(document).ready(function() {
                                         </div>
                                     </div>
                                 </div>
-                                <div class="panel panel-primary">
+                                <div class="panel panel-default">
                                     <div class="panel-heading">
                                         <h4 class="panel-title">
                                             <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">{% trans "Consulta Guardada" %}</a>
@@ -167,13 +167,13 @@ $(document).ready(function() {
 
                                                 </dl>
                                                 <div class='buttons'>
-                                                    <input class="btn btn-primary" type='submit' value='{% trans "Save Query" %}'>
+                                                    <input class="btn btn-success" type='submit' value='{% trans "Save Query" %}'>
                                                 </div>
                                             {% csrf_token %}</form>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="panel panel-primary">
+                                <div class="panel panel-default">
                                     <div class="panel-heading">
                                         <h4 class="panel-title">
                                             <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree">{% trans "Usar Consulta Guardada" %}</a>
@@ -187,7 +187,7 @@ $(document).ready(function() {
                                                     <option value='{{ q.id }}'>{{ q.title }}{% if q.shared %} (Shared{% ifnotequal user q.user %} by {{ q.user.get_username }}{% endifnotequal %}){% endif %}</option>
                                                     {% endfor %}
                                                 </select></p>
-                                                <input class="btn btn-primary" type='submit' value='{% trans "Run Query" %}'>
+                                                <input class="btn btn-success" type='submit' value='{% trans "Run Query" %}'>
                                             {% csrf_token %}</form>
                                         </div>
                                     </div>
@@ -205,7 +205,7 @@ $(document).ready(function() {
 
             <div class="row">
                 <div class="col-lg-12">
-                    <div class="panel panel-primary">
+                    <div class="panel panel-default">
                         <div class="panel-heading">
                             {% trans "Resultado de Consulta" %}
                         </div>
@@ -220,10 +220,10 @@ $(document).ready(function() {
                                             <th>&nbsp;</th>
                                             <th>{% trans "Pr" %}</th>
                                             <th>{% trans "Titulo" %}</th>
-                                            <th>{% trans "Tipo de solicitud" %}</th>
+                                            <th>{% trans "Tipo" %}</th>
                                             <th>{% trans "Estado" %}</th>
                                             <th>{% trans "Creado" %}</th>
-                                            <th>{% trans "Tiempo de entrega" %}</th>
+                                            <th>{% trans "Fecha" %}</th>
                                             <th>{% trans "Responsable" %}</th>
                                         </tr>
                                     </thead>
@@ -246,12 +246,12 @@ $(document).ready(function() {
                             {% csrf_token %}
 
                                 <p><label>{% trans "Select:" %} </label>
-                                    <a href='#select_all' id='select_all'><button class="btn btn-primary btn-sm"><i class="fa fa-check-circle"></i>&nbsp;{% trans "Todos" %}</button></a>
-                                    <a href='#select_none' id='select_none'><button class="btn btn-primary btn-sm"><i class="fa fa-times-circle"></i>&nbsp;{% trans "Ninguno" %}</button></a>
-                                    <a href='#select_inverse' id='select_inverse'><button class="btn btn-primary btn-sm"><i class="fa fa-arrows-alt"></i>&nbsp;{% trans "Invertir" %}</button></a>
+                                    <a href='#select_all' id='select_all'><button class="btn btn-success btn-sm"><i class="fa fa-check-circle"></i>&nbsp;{% trans "Todos" %}</button></a>
+                                    <a href='#select_none' id='select_none'><button class="btn btn-success btn-sm"><i class="fa fa-times-circle"></i>&nbsp;{% trans "Ninguno" %}</button></a>
+                                    <a href='#select_inverse' id='select_inverse'><button class="btn btn-success btn-sm"><i class="fa fa-arrows-alt"></i>&nbsp;{% trans "Invertir" %}</button></a>
                                 </p>
 
-                                <p><label for='id_mass_action'>{% trans "With Selected Tickets:" %}</label> <select name='action' id='id_mass_action'><option value='take'>{% trans "Take (Assign to me)" %}</option><option value='delete'>{% trans "Delete" %}</option><optgroup label='{% trans "Close" %}'><option value='close'>{% trans "Close (Don't Send E-Mail)" %}</option><option value='close_public'>{% trans "Close (Send E-Mail)" %}</option></optgroup><optgroup label='{% trans "Assign To" %}'><option value='unassign'>{% trans "Nobody (Unassign)" %}</option>{% for u in user_choices %}<option value='assign_{{ u.id }}'>{{ u.get_username }}</option>{% endfor %}</optgroup></select> <button type="submit" class="btn btn-primary btn-sm"><i class="fa fa-arrow-circle-right"></i>&nbsp;{% trans "Go" %}</button></p>
+                                <p><label for='id_mass_action'>{% trans "With Selected Tickets:" %}</label> <select name='action' id='id_mass_action'><option value='take'>{% trans "Take (Assign to me)" %}</option><option value='delete'>{% trans "Delete" %}</option><optgroup label='{% trans "Close" %}'><option value='close'>{% trans "Close (Don't Send E-Mail)" %}</option><option value='close_public'>{% trans "Close (Send E-Mail)" %}</option></optgroup><optgroup label='{% trans "Assign To" %}'><option value='unassign'>{% trans "Nobody (Unassign)" %}</option>{% for u in user_choices %}<option value='assign_{{ u.id }}'>{{ u.get_username }}</option>{% endfor %}</optgroup></select> <button type="submit" class="btn btn-success btn-sm"><i class="fa fa-arrow-circle-right"></i>&nbsp;{% trans "Go" %}</button></p>
                             </form>
                         </div>
                         <!-- /.panel-body -->
