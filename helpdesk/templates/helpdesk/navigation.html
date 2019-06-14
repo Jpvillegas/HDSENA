@@ -117,7 +117,7 @@
 
                 {% if not request.path == '/helpdesk/login/' or user.is_authenticated %}
                       
-                    <ul class="nav navbar-nav navbar-right">
+                    <ul class="nav navbar-nav navbar-center">
                        {% if user.is_authenticated %}<a href='{% url 'helpdesk:logout' %}'>{% trans "Salir" %}</a>{% else %}<a href='{% url 'helpdesk:login' %}?next={% if next %}{{ next|escape }}{% else %}{% url 'helpdesk:home' %}{% endif %}'><span class="glyphicon glyphicon-log-in"></span>{% trans "Login" %}</a>{% endif %}
                     </ul>
                 
