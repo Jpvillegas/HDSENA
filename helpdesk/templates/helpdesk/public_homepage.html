@@ -28,7 +28,7 @@
 
 <div class="panel-body">
     <h2 name='submit'>{% trans "Registrar Tickets" %}</h2>
-<p>{% trans "Todos los campos son obligatorios" %} {% trans "Por favor proporcione un título y una descripción lo más descriptivos posible." %}</p>
+<p>{% trans "Todos los campos son obligatorios" %} {% trans "Por favor proporcione un título y una descripción lo más claro posible." %}</p>
 
 <form role="form" method='post' action='./#submit' enctype='multipart/form-data'>
 <fieldset>
@@ -81,7 +81,7 @@
         <div class="input-group"><input type='text' name='ticket' placeholder="Ejemplo: 1" /></div>
     </div>
     <div class="form-group {% if field.errors %}has-error{% endif %}">
-        <label for='id_email'>{% trans "Tu Correo Electronico" %}</label>
+        <label for='id_email'>{% trans "Correo Electronico" %}</label>
         <div class="input-group"><input type='text' name='email' placeholder="Ejemplo: xa@gmail.com"/></div>
     </div>
     <div class='buttons form-group'>
