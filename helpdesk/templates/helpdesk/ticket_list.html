@@ -76,7 +76,7 @@ $(document).ready(function() {
                                                     {% trans "Creados" %}
                                                 </option>
                                                 <option value='title'{% ifequal query_params.sorting "title"%} selected='selected'{% endifequal %}>
-                                                    {% trans "Titulo" %}
+                                                    {% trans "Descripcion" %}
                                                 </option>
                                                 <option value='queue'{% ifequal query_params.sorting "queue"%} selected='selected'{% endifequal %}>
                                                     {% trans "Tipo de Solicitud" %}
@@ -220,7 +220,7 @@ $(document).ready(function() {
                                             <th>&nbsp;</th>
                                             <th>{% trans "Pr" %}</th>
                                             <th>{% trans "Titulo" %}</th>
-                                            <th>{% trans "Tipo" %}</th>
+                                            <th>{% trans "Tipo de solicitud" %}</th>
                                             <th>{% trans "Estado" %}</th>
                                             <th>{% trans "Creado" %}</th>
                                             <th>{% trans "Tiempo de entrega" %}</th>
