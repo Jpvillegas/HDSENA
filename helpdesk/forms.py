@@ -146,7 +146,7 @@ class AbstractTicketForm(CustomFieldMixin, forms.Form):
         required=True,
         widget=forms.TextInput(attrs={'class': 'form-control'}),
         label=_('Resumen del problema'),
-        help_text=_("Modulo(Ficha fam,ciudadano,etc...)"),
+        help_text=_("Ejm:Ficha Familiar. no deja agregar ciudadanos"),
     )
 
     body = forms.CharField(
@@ -169,12 +169,13 @@ class AbstractTicketForm(CustomFieldMixin, forms.Form):
         widget=forms.TextInput(attrs={'class': 'form-control'}),
         required=False,
         label=_('Fecha limite para dar solucion'),
+         help_text=_('¡Antes de que se cumpla esta fecha trataremos de darle solucion al incidente!')
     )
 
     attachment = forms.FileField(
         required=False,
         label=_('Subir archivo'),
-        help_text=_('Puede adjuntar un archivo como un documento o una captura de pantalla a este ticket.'),
+        help_text=_('Esta funcion esta en desarrollo.Por favor no adjuntar ningun archivo'),
     )
 
     def _add_form_custom_fields(self, staff_only_filter=None):
