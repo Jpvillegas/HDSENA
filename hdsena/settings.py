@@ -167,6 +167,15 @@ EMAIL_HOST_PASSWORD = 'sena789456'
 
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 
+HELPDESK_DEFAULT_SETTINGS = {
+        'use_email_as_submitter': True,
+        'email_on_ticket_assign': True,
+        'email_on_ticket_change': True,
+        'login_view_ticketlist': True,
+        'tickets_per_page': 25
+        }
+
+
 
 
 
