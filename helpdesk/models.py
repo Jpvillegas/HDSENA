@@ -283,9 +283,9 @@ class Queue(models.Model):
             default_email = re.match(".*<(?P<email>.*@*.)>", settings.DEFAULT_FROM_EMAIL)
             if default_email is not None:
                 # already in the right format, so just include it here
-                return u'NO QUEUE EMAIL ADDRESS DEFINED %s' % settings.DEFAULT_FROM_EMAIL
+                return u'Soporte TDS %s' % settings.DEFAULT_FROM_EMAIL
             else:
-                return u'NO QUEUE EMAIL ADDRESS DEFINED <%s>' % settings.DEFAULT_FROM_EMAIL
+                return u'Soporte TDS <%s>' % settings.DEFAULT_FROM_EMAIL
         else:
             return u'%s <%s>' % (self.title, self.email_address)
     from_address = property(_from_address)
