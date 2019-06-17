@@ -146,6 +146,7 @@ class AbstractTicketForm(CustomFieldMixin, forms.Form):
         required=True,
         widget=forms.TextInput(attrs={'class': 'form-control'}),
         label=_('Resumen del problema'),
+        help_text=_("Modulo(Ficha fam,ciudadano,etc...)"),
     )
 
     body = forms.CharField(

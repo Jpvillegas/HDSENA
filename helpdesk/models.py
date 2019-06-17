@@ -381,11 +381,11 @@ class Ticket(models.Model):
     )
 
     PRIORITY_CHOICES = (
-        (1, _('1. Emergencia')),
-        (2, _('2. Urgente')),
-        (3, _('3. Normal')),
-        (4, _('4. Menos Urgente')),
-        (5, _('5. Baja Urgencia')),
+        (1, _('1. Critica')),
+        (2, _('2. Alta')),
+        (3, _('3. Media')),
+        (4, _('4. Baja')),
+        (5, _('5. No Aplica')),
     )
 
     title = models.CharField(
