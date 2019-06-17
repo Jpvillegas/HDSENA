@@ -158,8 +158,19 @@ MEDIA_ROOT = os.path.join(BASE_DIR, "media/")
 
 
 
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'proyectotds@gmail.com'
+EMAIL_HOST_PASSWORD = 'sena798'
+
+
+
+
+
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend' #funciona pero no envia correos
+ #funciona pero no envia correos
 #EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'  #yaaa
 #EMAIL_BACKEND = 'django.core.mail.backends.locmem.EmailBackend'
 
