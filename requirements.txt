@@ -1,7 +1,7 @@
 django-cors-headers==3.0.2
 beautifulsoup4==4.7.1
 dj-database-url==0.5.0
-Django==2.2.3
+django>=2.2.4
 django-bootstrap-form==3.4
 django-markdown-deux==1.0.5
 email-reply-parser==0.5.9
