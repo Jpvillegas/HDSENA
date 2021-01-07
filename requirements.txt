@@ -6,7 +6,7 @@ django-bootstrap-form==3.4
 django-markdown-deux==1.0.5
 email-reply-parser==0.5.9
 gunicorn==19.9.0
-lxml==4.3.4
+lxml==4.6.2
 markdown2==2.3.8
 psycopg2==2.8.2
 python-decouple==3.1
